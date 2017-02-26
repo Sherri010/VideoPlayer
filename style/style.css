@@ -1,0 +1,15 @@
+.vitem {
+  padding:30px;
+}
+.navbar{
+  background:green;
+  padding:20px;
+}
+.navbar_item{
+  display:inline-block;
+  float:right;
+  padding:10px;
+}
+.navbar_item a{
+  color:#fff;
+}
