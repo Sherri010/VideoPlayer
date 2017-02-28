@@ -7,7 +7,7 @@ class SearchBar extends Component {
 
     //when ever the user enters something new in the field,
     //this will be updated
-    this.state = { term:' '};
+    this.state = { term:'cats'};
   }
 
   render(){
@@ -15,7 +15,9 @@ class SearchBar extends Component {
     //must return jsx
     return (
       <div>
-        <input onChange = { event => this.setState({term: event.target.value})} />;
+        <input
+          value={this.state.term}
+          onChange = { event => this.setState({term: event.target.value})} />;
         value of input: {this.state.term}
     </div>
     );
