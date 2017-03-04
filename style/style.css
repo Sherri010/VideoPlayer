@@ -13,12 +13,24 @@
 .navbar_item a{
   color:#fff;
 }
-.footer{
-  background:grey;
-  color:white;
-  height:100vh;
-  text-align:center;
-}
+
 .main{
 padding:50px 100px;
+}
+.title{
+  font-weight:bold;
+}
+.media-channel{
+   font-size:14px;
+  }
+.media-heading{
+   color:grey;
+}
+
+.list-group{
+  padding:40px;
+}
+.search-intro{
+  margin-top:40px;
+  margin-bottom:10px;
 }

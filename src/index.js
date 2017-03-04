@@ -6,6 +6,7 @@ import VideoList from './components/video_list';
 import Nav from './components/navbar';
 import Footer from './components/footer';
 import YTSearch from 'youtube-api-search';
+import VideoDetail from './components/video_detail';
 //youtube api key
 const API_KEY = 'AIzaSyCUKSl78-hR09poPKX0qPVtX6eS1fdVYAk';
 
@@ -18,6 +19,7 @@ class App extends Component {
 
     //ajax for fetching data from youtube api
     YTSearch({key: API_KEY, term:'surfbeards'}, videos =>{
+      console.log(videos)
       //this.setState({videos:videos}) when key and value are having the same name you can mention just one is es6
       this.setState({videos});
     });
@@ -28,10 +30,11 @@ class App extends Component {
               <Nav />
               <div className="main">
                 <div> Search:<SearchBar /> </div>
+                <VideoDetail video={this.state.videos[0]} />
                 {/* passes props to VideoList */}
-                <div>List: <VideoList videos={this.state.videos}/></div>
+                <div><p className="search-intro">Search Results:</p><VideoList videos={this.state.videos}/></div>
               </div>
-              <Footer />
+              {/* <Footer /> */}
           </div>
         );
     }
