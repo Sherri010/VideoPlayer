@@ -19,9 +19,13 @@ class App extends Component {
       videos:[],
        selectedVideo:null
      };
+     this.videoSearch('surfboards');
 
     //ajax for fetching data from youtube api
-    YTSearch({key: API_KEY, term:'surfbeards'}, videos =>{
+  }
+
+  videoSearch(term){
+    YTSearch({key: API_KEY, term: term}, videos =>{
       console.log(videos)
       //this.setState({videos:videos}) when key and value are having the same name you can mention just one is es6
       this.setState({videos:videos,
@@ -30,16 +34,18 @@ class App extends Component {
   }
 
   render(){
-    return (<div >
+    return (<div>
               <Nav />
               <div className="main">
-                <div> Search:<SearchBar /> </div>
-                <VideoDetail video={this.state.selectedVideo} />
+                <div> Search:<SearchBar OnSearchTermChange={ term => this.videoSearch(term)}/> </div>
+                <div className="current_play col-md-8">
+                  <VideoDetail video={this.state.selectedVideo} />
+                </div>
                 {/* passes props to VideoList */}
-                <div>
+                <div className="list col-md-4">
                   <p className="search-intro">Search Results:</p>
                   <VideoList
-                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    onVideoSelect={(selectedVideo) => this.setState({selectedVideo})}
                     videos={this.state.videos}/>
                 </div>
               </div>

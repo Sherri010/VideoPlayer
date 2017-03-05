@@ -14,10 +14,10 @@ class SearchBar extends Component {
 
     //must return jsx
     return (
-      <div>
+      <div className="search_bar">
         <input
           value={this.state.term}
-          onChange = { event => this.setState({term: event.target.value})} />
+          onChange = { event => this.onInputChange(event.target.value)} autoFocus/>
     </div>
     );
     //return <input onChange={this.onInputChange} />;
@@ -25,8 +25,9 @@ class SearchBar extends Component {
     // <input onChange={ event => console.log(event.target)} />;
   }
 
-  onInputChange(event){
-    console.log(event.target.value);
+  onInputChange(term){
+    this.setState({term});
+    this.props.OnSearchTermChange(term);
   }
 }
 
