@@ -1,5 +1,6 @@
 //importing React
-import React , {Component} from 'react'
+import React , {Component} from 'react';
+import _ from 'lodash';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
@@ -34,10 +35,12 @@ class App extends Component {
   }
 
   render(){
+    const VideoSearch= _.debounce((term) => {this.videoSearch(term)},300);
+
     return (<div>
               <Nav />
               <div className="main">
-                <div> Search:<SearchBar OnSearchTermChange={ term => this.videoSearch(term)}/> </div>
+                <div> Search:<SearchBar OnSearchTermChange={VideoSearch}/> </div>
                 <div className="current_play col-md-8">
                   <VideoDetail video={this.state.selectedVideo} />
                 </div>
